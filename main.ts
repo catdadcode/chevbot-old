@@ -12,12 +12,11 @@ import discordClient from "./discord-client";
 import config from "./config";
 import { initializeDb } from "./db";
 // import { handler as listChannels } from "./commands/channels";
-import { cronJobs, initEventRsvp, addJournalChannel } from "./functions";
+import { cronJobs, initEventRsvp } from "./functions";
 
 const readDir = util.promisify(fs.readdir);
 
 const {
-  ALERIS_GUILD_ID,
   COMMAND_PREFIX,
   DISCORD_BOT_TOKEN,
   PORT
@@ -97,9 +96,6 @@ const {
       ctx.drawImage(avatar, 25, 25, 200, 200);
       const attachment = new MessageAttachment(canvas.toBuffer(), "welcome-image.png");
       await channel.send(attachment);
-      if (member.guild.id === ALERIS_GUILD_ID) { 
-        await addJournalChannel(member);
-      }
     } catch (err) {
       console.error(err);
     }

@@ -1,7 +1,7 @@
 import moment from "moment-timezone";
-import sloganChecker from "./slogan-checker";
+import haloCounter from "./halo-counter";
 import onThisDay from "./on-this-day";
-import xboxAvailability from "./xbox-availability";
+import sloganChecker from "./slogan-checker";
 // import eventReminders from "./event-reminders";
 
 export default async function () {
@@ -14,15 +14,14 @@ export default async function () {
       if (now.hour() === 6 && now.minute() === 0) {
         await Promise.all([
           onThisDay(),
-          sloganChecker(),
-          xboxAvailability()
+          sloganChecker()
         ]);
       }
 
-      // 6pm MST
-      if (now.hour() === 18 && now.minute() === 0) {
+      // 8am MST
+      if (now.hour() === 8 && now.minute() === 0) {
         await Promise.all([
-          xboxAvailability()
+          haloCounter()
         ]);
       }
 
