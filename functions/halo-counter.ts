@@ -14,11 +14,12 @@ export default async function () {
   const haloDate = moment(new Date("12/8/2021 12:00:00 AM"));
   const now = moment();
   const daysRemaining = Math.round(moment.duration(haloDate.diff(now)).asDays());
+  const image = `${daysRemaining.toString().padStart(2, "0")}.jpg`;
   const message = new MessageEmbed()
     .setTitle(`${daysRemaining} days until Halo Infinite!`)
     .setColor("#5F7550")
-    .attachFiles(["./images/chevtek.png", `./images/halo-infinite/${daysRemaining}.jpg`])
-    .setImage(`attachment://${daysRemaining}.jpg`)
+    .attachFiles(["./images/chevtek.png", `./images/halo-infinite/${image}`])
+    .setImage(`attachment://${image}`)
     .setDescription(`December 8th, 2021`)
     .setFooter("Powered by Chevtek", "attachment://chevtek.png");
   return haloChannel.send(message);
