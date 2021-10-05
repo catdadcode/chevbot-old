@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import haloCounter from "./halo-counter";
+import gameCountdown from "./game-countdown";
 import onThisDay from "./on-this-day";
 import sloganChecker from "./slogan-checker";
 // import eventReminders from "./event-reminders";
@@ -21,7 +21,7 @@ export default async function () {
       // 8am MST
       if (now.hour() === 8 && now.minute() === 0) {
         await Promise.all([
-          haloCounter()
+          gameCountdown()
         ]);
       }
 
